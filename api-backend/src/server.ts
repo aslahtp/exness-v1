@@ -75,6 +75,29 @@ app.get("/api/v1/verify", async (req, res) => {
   res.send("Cookie set successfully");
 });
 
+app.get("/api/v1/supportedAssets", (req, res) => {
+  const assets = [
+    {
+      symbol: "BTC",
+      name: "Bitcoin",
+      imageUrl: `http://localhost:${PORT}/assets/btc.png`,
+    },
+    {
+      symbol: "ETH",
+      name: "Ethereum",
+      imageUrl: `http://localhost:${PORT}/assets/eth.png`,
+    },
+    {
+      symbol: "SOL",
+      name: "Solana",
+      imageUrl: `http://localhost:${PORT}/assets/sol.png`,
+    },
+  ];
+
+  res.json({ assets });
+});
+
+
 app.use(verifyToken);
 
 app.listen(PORT, () => {
